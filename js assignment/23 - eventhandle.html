@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+try {
+    let num = 10;
+    let result = num / 2;
+
+    if (!isFinite(result)) {
+        throw "Cannot divide by zero!";
+    }
+
+    document.write("Result: " + result);
+} 
+catch (error) {
+    document.write("Error: " + error);
+}
+</script>
+
+</body>
+</html>
