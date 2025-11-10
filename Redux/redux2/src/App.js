@@ -1,27 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Products from './Products';
-import CartProvider from './ContextCart';
-import Cart from './Cart';
+import React from "react";
+import { RecoilRoot } from "recoil";
+import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
 
 function App() {
-
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={
-            <CartProvider>
-              <Products />
-              <Cart/>
-            </CartProvider>}></Route>
-
-        </Routes>
-
-      </BrowserRouter>
-
-    </div>
+    <RecoilRoot>
+      <div className="app-container">
+        <h1>Recoil Todo List</h1>
+        <TodoInput />
+        <TodoList />
+      </div>
+    </RecoilRoot>
   );
 }
 

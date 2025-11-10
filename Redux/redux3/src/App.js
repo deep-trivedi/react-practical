@@ -1,37 +1,19 @@
 import React from "react";
-import './App.css';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { app } from "./anything";
-
-const auth = getAuth(app);
+import { Provider } from "react-redux";
+import { store } from "./app/store";
+import AddUser from "./components/AddUser";
+import UserList from "./features/users/UserList";
+import "./index.css";
 
 function App() {
-  const navigate = useNavigate();
-
-  const clickSignIn = () => {
-    signInWithEmailAndPassword(auth, "hux@gmail.com", "iuyuiy")
-      .then(res => {
-        console.log(res);
-        navigate("/SignIn"); 
-      })
-      .catch(err => console.error(err.message));
-  };
-
-  const clickSignUp = () => {
-    createUserWithEmailAndPassword(auth, "hux@gmail.com", "iuyuiy")
-      .then(res => {
-        console.log(res);
-        navigate("/SignUp"); 
-      })
-      .catch(err => console.error(err.message));
-  };
-
   return (
-    <div className="App">
-      <button onClick={clickSignIn}>Sign In</button>
-      <button onClick={clickSignUp}>Sign Up</button>
-    </div>
+    <Provider store={store}>
+      <div className="container">
+        <h1>Redux Toolkit CRUD App</h1>
+        <AddUser />
+        <UserList />
+      </div>
+    </Provider>
   );
 }
 
